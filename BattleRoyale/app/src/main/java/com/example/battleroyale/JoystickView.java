@@ -1,5 +1,10 @@
 package com.example.battleroyale;
 
+/*
+This code was taken from a GitHub repository:
+    https://github.com/controlwear/virtual-joystick-demo
+ */
+
 import android.view.View;
 import android.content.Context;
 import android.content.res.TypedArray;
