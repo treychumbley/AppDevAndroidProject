@@ -4,9 +4,11 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
+import java.lang.Math;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -22,23 +24,32 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //TextView mTextViewAngleLeft = (TextView) findViewById(R.id.joystickView_left);
-        //TextView mTextViewStrengthLeft = (TextView) findViewById(R.id.joystickView_left);
-
+        //Left Joystick
         final JoystickView joystickLeft = (JoystickView) findViewById(R.id.joystickView_left);
+
+        //Creat a string for ImageView Label
+        final String IMAGEVIEW_TAG = "icon bitmap";
+        ImageView imageView = new ImageView(this);
+
+
+        //Player Object Image
         final ImageView playerView = findViewById(R.id.playerImage);
+
+
+        //playerView.setImageBitmap();
+
         joystickLeft.setOnMoveListener(new JoystickView.OnMoveListener() {
             @RequiresApi(api = Build.VERSION_CODES.Q)
             @Override
             public void onMove(int angle, int strength) {
+                float playerX = (float) Math.cos(angle);
+                float playerY = (float) Math.sin(angle);
 
-                //RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(30, 30);
-                //playerView.setLayoutParams(layoutParams);
 
                 if (joystickLeft.isEnabled()) {
 
-                    playerView.setTranslationX(angle);
-                    playerView.setTranslationY(angle);
+                    playerView.setTranslationX(playerX);
+                    playerView.setTranslationY(playerY);
                 }
 
             }
