@@ -818,7 +818,6 @@ public class JoystickView extends View
         }
     }
 
-
     /**
      * Set the current behavior of the auto re-center button
      * @param b True if automatically re-centered or False if not
@@ -827,7 +826,6 @@ public class JoystickView extends View
         mAutoReCenterButton = b;
     }
 
-
     /**
      * Set the current behavior of the button stick to border
      * @param b True if the button stick to the border or False (default) if not
@@ -835,7 +833,6 @@ public class JoystickView extends View
     public void setButtonStickToBorder(boolean b) {
         mButtonStickToBorder = b;
     }
-
 
     /**
      * Set the current authorized direction for the button to move
