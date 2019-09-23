@@ -7,7 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3935b957-8bbe-4bd9-b6ad-f44a3cd0c6cc" name="Default Changelist" comment="">
-<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_github_controlwear_virtualjoystick_1_9_2_aar.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
@@ -28,8 +27,6 @@
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/battleroyale/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/battleroyale/MainActivity.java" afterDir="false" />
-=======
->>>>>>> 5380e7d64983d464030f9e70ee9f2628909fb171
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
@@ -87,19 +84,13 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
           <provider selected="true" editor-type-id="android-designer2" />
           <provider editor-type-id="text-editor">
-<<<<<<< HEAD
             <state relative-caret-position="935">
               <caret line="55" selection-start-line="55" selection-end-line="55" />
-=======
-            <state relative-caret-position="272">
-              <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
->>>>>>> 5380e7d64983d464030f9e70ee9f2628909fb171
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml">
           <provider selected="true" editor-type-id="android-designer2" />
           <provider editor-type-id="text-editor" />
@@ -107,9 +98,6 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/battleroyale/GameActivity.java">
-=======
-        <entry file="file://$PROJECT_DIR$/BattleRoyale/app/src/main/res/layout/activity_main.xml">
->>>>>>> 5380e7d64983d464030f9e70ee9f2628909fb171
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
@@ -211,11 +199,6 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
-<<<<<<< HEAD
-=======
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
->>>>>>> 5380e7d64983d464030f9e70ee9f2628909fb171
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -226,16 +209,11 @@
             <path>
               <item name="BattleRoyale" type="b2602c69:ProjectViewProjectNode" />
               <item name="AppDevAndroidProject" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-<<<<<<< HEAD
               <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-=======
-              <item name="BattleRoyale" type="462c0819:PsiDirectoryNode" />
->>>>>>> 5380e7d64983d464030f9e70ee9f2628909fb171
             </path>
             <path>
               <item name="BattleRoyale" type="b2602c69:ProjectViewProjectNode" />
               <item name="AppDevAndroidProject" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-<<<<<<< HEAD
               <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -262,20 +240,13 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="battleroyale" type="462c0819:PsiDirectoryNode" />
-=======
-              <item name="BattleRoyale" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
->>>>>>> 5380e7d64983d464030f9e70ee9f2628909fb171
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-<<<<<<< HEAD
       <pane id="Scope" />
       <pane id="PackagesPane" />
-=======
->>>>>>> 5380e7d64983d464030f9e70ee9f2628909fb171
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -544,19 +515,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BattleRoyale/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="935">
           <caret line="55" selection-start-line="55" selection-end-line="55" />
-=======
-        <state relative-caret-position="272">
-          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
->>>>>>> 5380e7d64983d464030f9e70ee9f2628909fb171
         </state>
       </provider>
     </entry>
