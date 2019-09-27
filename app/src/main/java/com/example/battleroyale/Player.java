@@ -12,6 +12,7 @@ public class Player {
     private String username;
     private boolean alive = true;
     private int kills = 0;
+    private Weapon weapon;
 
     //initialize player
     public Player(int xCoordinate, int yCoordinate, String userID){
@@ -34,6 +35,8 @@ public class Player {
         health = health - damage;
         return checkStatus(health);
     }
+
+
 
     @Override
     public String toString() {
@@ -60,5 +63,6 @@ public class Player {
         Log.i("Test",player1.toString());
         player1.takeDamage(33);
         Log.i("Test",player1.toString());
+
     }
 }
