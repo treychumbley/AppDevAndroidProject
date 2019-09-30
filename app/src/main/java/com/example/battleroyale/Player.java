@@ -6,8 +6,8 @@ import android.util.*;
 
 public class Player {
     private int health = 100;
-    private int xLocation;
-    private int yLocation;
+    private double xLocation;
+    private double yLocation;
     private int ammo;
     private String username;
     private boolean alive = true;
@@ -34,6 +34,18 @@ public class Player {
     public boolean takeDamage(int damage){
         health = health - damage;
         return checkStatus(health);
+    }
+
+    public void pickUpObject(Object object){
+        if(object.objectType == 0) {
+            Weapon newWeapon = object;
+            pickUpWeapon(object);
+        }
+    }
+
+    public void pickUpWeapon(Weapon newWeapon){
+        weapon = newWeapon;
+        ammo = weapon.initialAmmo;
     }
 
 
