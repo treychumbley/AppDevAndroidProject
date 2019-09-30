@@ -17,6 +17,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //testing
+        Player player1 = new Player(45,45,"Player1");
+        Log.i("TestPlay",player1.toString());
+        player1.takeDamage(33);
+        Log.i("TestPlay",player1.toString());
+        player1.takeDamage(33);
+        Log.i("TestPlay",player1.toString());
+        player1.takeDamage(33);
+        Log.i("TestPlay",player1.toString());
+        player1.takeDamage(33);
+        Log.i("TestPlay",player1.toString());
+
     }
 
     public void goToGame(View view){
@@ -28,4 +41,5 @@ public class MainActivity extends AppCompatActivity {
         Intent settingsIntent = new Intent(this, SettingsActivity.class);
         startActivity(settingsIntent);
     }
+
 }

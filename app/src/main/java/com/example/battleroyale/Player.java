@@ -36,16 +36,18 @@ public class Player {
         return checkStatus(health);
     }
 
-    public void pickUpObject(Object object){
-        if(object.objectType == 0) {
-            Weapon newWeapon = object;
-            pickUpWeapon(object);
-        }
-    }
 
     public void pickUpWeapon(Weapon newWeapon){
         weapon = newWeapon;
         ammo = weapon.initialAmmo;
+    }
+
+    public void pickUpAmmoBox(AmmoBox ammoBox){
+        ammo += ammoBox.setAmmo(weapon);
+    }
+
+    public void pickUpHealthPack(HealthPack healthPack){
+        health += healthPack.addHealth();
     }
 
 
@@ -60,21 +62,8 @@ public class Player {
                 ", username='" + username + '\'' +
                 ", alive=" + alive +
                 ", kills=" + kills +
+                ", weapon=" + weapon +
                 '}';
     }
 
-
-    public static void main(String[] args){
-        Player player1 = new Player(45,45,"Player1");
-        Log.i("Test",player1.toString());
-        player1.takeDamage(33);
-        Log.i("Test",player1.toString());
-        player1.takeDamage(33);
-        Log.i("Test",player1.toString());
-        player1.takeDamage(33);
-        Log.i("Test",player1.toString());
-        player1.takeDamage(33);
-        Log.i("Test",player1.toString());
-
-    }
 }

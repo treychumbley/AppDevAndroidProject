@@ -6,5 +6,6 @@ public class Pistol extends Weapon {
         initialAmmo = 25;
         damage = 20;
         firerate = .5;
+        weaponType = 0;
     }
 }

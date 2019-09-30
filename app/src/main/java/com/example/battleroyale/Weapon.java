@@ -7,6 +7,8 @@ public class Weapon extends Object {
     public int initialAmmo;
     public int damage;
     public double firerate;
+    public int weaponType; // 0 = Pistol, 1 = Shotgun
+
     public Weapon(){
         objectType = 0;
     }

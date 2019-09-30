@@ -6,5 +6,6 @@ public class Shotgun extends Weapon {
         initialAmmo = 15;
         damage = 35;
         firerate = .9;
+        weaponType = 1;
     }
 }
