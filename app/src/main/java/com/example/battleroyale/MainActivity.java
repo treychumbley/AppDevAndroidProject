@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
@@ -16,10 +17,29 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //testing
+        Player player1 = new Player(45,45,"Player1");
+        Log.i("TestPlay",player1.toString());
+        player1.takeDamage(33);
+        Log.i("TestPlay",player1.toString());
+        player1.takeDamage(33);
+        Log.i("TestPlay",player1.toString());
+        player1.takeDamage(33);
+        Log.i("TestPlay",player1.toString());
+        player1.takeDamage(33);
+        Log.i("TestPlay",player1.toString());
+
     }
 
     public void goTo(View view){
         Intent battleIntent = new Intent(this, GameActivity.class);
         startActivity(battleIntent);
     }
+
+    public void goToSettings(View view){
+        Intent settingsIntent = new Intent(this, SettingsActivity.class);
+        startActivity(settingsIntent);
+    }
+
 }

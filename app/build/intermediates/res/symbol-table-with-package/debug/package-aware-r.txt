@@ -866,6 +866,10 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_game
 layout activity_main
+<<<<<<< HEAD
+=======
+layout activity_settings
+>>>>>>> 9a7ba61625ebaaf1bfa8d0868fd6a69ed2950b7a
 layout notification_action
 layout notification_action_tombstone
 layout notification_template_custom_big
