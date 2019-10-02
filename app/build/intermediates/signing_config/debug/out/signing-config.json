@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 {"mName":"debug","mStoreFile":"C:\\Users\\samad\\.android\\debug.keystore","mStorePassword":"android","mKeyAlias":"AndroidDebugKey","mKeyPassword":"android","mStoreType":"jks","mV1SigningEnabled":true,"mV2SigningEnabled":true}
-=======
-{"mName":"debug","mStoreFile":"/Users/trey.chumbley/.android/debug.keystore","mStorePassword":"android","mKeyAlias":"AndroidDebugKey","mKeyPassword":"android","mStoreType":"jks","mV1SigningEnabled":true,"mV2SigningEnabled":true}
->>>>>>> 9a7ba61625ebaaf1bfa8d0868fd6a69ed2950b7a

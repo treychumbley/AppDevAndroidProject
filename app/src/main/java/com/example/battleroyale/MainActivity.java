@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void goTo(View view){
+    public void goToGame(View view){
         Intent battleIntent = new Intent(this, GameActivity.class);
         startActivity(battleIntent);
     }

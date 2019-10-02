@@ -71,11 +71,8 @@
         android:layout_height="wrap_content"
         android:text="Battle"
         android:textColor="#9C27B0"
-<<<<<<< HEAD
-        android:onClick="goTo"
-=======
+
         android:onClick="goToGame"
->>>>>>> 9a7ba61625ebaaf1bfa8d0868fd6a69ed2950b7a
         app:layout_constraintBottom_toBottomOf="@+id/mainbg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.47"
