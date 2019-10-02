@@ -20,13 +20,21 @@ public class MainActivity extends AppCompatActivity {
 
         //testing
         Player player1 = new Player(45,45,"Player1");
+        Pistol pistol = new Pistol();
+        Shotgun shotgun = new Shotgun();
+        HealthPack healthPack = new HealthPack();
+        AmmoBox ammoBox = new AmmoBox();
         Log.i("TestPlay",player1.toString());
         player1.takeDamage(33);
         Log.i("TestPlay",player1.toString());
+        player1.pickUpWeapon(pistol);
         player1.takeDamage(33);
         Log.i("TestPlay",player1.toString());
+        player1.pickUpHealthPack(healthPack);
+        player1.pickUpAmmoBox(ammoBox);
         player1.takeDamage(33);
         Log.i("TestPlay",player1.toString());
+        player1.pickUpWeapon(shotgun);
         player1.takeDamage(33);
         Log.i("TestPlay",player1.toString());
 

@@ -645,6 +645,7 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable ammobox
 drawable bg_base
 drawable bg_stick
 drawable bg_stick_pressed
@@ -654,6 +655,8 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable icon
 drawable mainbg
+drawable map
+drawable medkit
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -666,6 +669,8 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable pistol
+drawable shotgun
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
@@ -866,6 +871,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_game
 layout activity_main
+layout activity_profile
 layout activity_settings
 layout notification_action
 layout notification_action_tombstone
