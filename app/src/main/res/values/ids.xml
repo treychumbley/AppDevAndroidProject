@@ -3,4 +3,6 @@
     <item name="tv_angle" type="id" />
     <item name="tv_offset" type="id" />
     <item name="bugview" type="id" />
+    <item name="joystickView_left" type="id" />
+    <item name="joystickView_right" type="id" />
 </resources>
