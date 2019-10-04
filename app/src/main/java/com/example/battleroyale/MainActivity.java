@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToGame(View view){
+        Log.i("test", "goToGame!!!!!");
         Intent battleIntent = new Intent(this, GameActivity.class);
         startActivity(battleIntent);
     }
@@ -50,4 +51,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(settingsIntent);
     }
 
+    public void getToProfile(View view) {
+        Log.i("test", "goToProfile!!!!!");
+        Intent profileIntent = new Intent(this, ProfileActivity.class);
+        startActivity(profileIntent);
+    }
 }
