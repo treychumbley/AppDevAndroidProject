@@ -866,6 +866,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_game
 layout activity_main
+layout activity_profile
 layout activity_settings
 layout notification_action
 layout notification_action_tombstone
