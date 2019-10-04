@@ -2,6 +2,7 @@ package com.example.battleroyale;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -30,6 +31,30 @@ public class GameActivity extends AppCompatActivity {
         final JoystickView joystickRight = findViewById(R.id.joystickView_right);
         //Create rotation listener
         joystickRight.setOnTouchListener(handleRotate);
+
+
+        addAmmoBoxToScreen();
+
+        //testing
+        Player player1 = new Player(45,45,"Player1");
+        Pistol pistol = new Pistol();
+        Shotgun shotgun = new Shotgun();
+        HealthPack healthPack = new HealthPack();
+        AmmoBox ammoBox = new AmmoBox();
+        Log.i("TestPlay",player1.toString());
+        player1.takeDamage(33);
+        Log.i("TestPlay",player1.toString());
+        player1.pickUpWeapon(pistol);
+        player1.takeDamage(33);
+        Log.i("TestPlay",player1.toString());
+        player1.pickUpHealthPack(healthPack);
+        player1.pickUpAmmoBox(ammoBox);
+        player1.takeDamage(33);
+        Log.i("TestPlay",player1.toString());
+        player1.pickUpWeapon(shotgun);
+        player1.pickUpAmmoBox(ammoBox);
+        player1.takeDamage(33);
+        Log.i("TestPlay",player1.toString());
 
     }
 
@@ -136,5 +161,22 @@ public class GameActivity extends AppCompatActivity {
 //                                joystickRight.getNormalizedY())*/
 //            }
 //        });
+
+        //adds Ammo Box to Screen at random location
+        public void addAmmoBoxToScreen(){
+            final ConstraintLayout layout = findViewById(R.id.gameLayout);
+
+            final ImageView ammo = new ImageView(this);
+
+            ammo.setX(0);
+            ammo.setY(0);
+            ammo.setBackgroundResource(R.drawable.ammo_box);
+//            ammo.requestLayout();
+//            ammo.getLayoutParams().height = 20;
+//            ammo.getLayoutParams().width = 20;
+//            ammo.setScaleType(ImageView.ScaleType.FIT_XY);
+            layout.addView(ammo);
+        }
+
     }
 
