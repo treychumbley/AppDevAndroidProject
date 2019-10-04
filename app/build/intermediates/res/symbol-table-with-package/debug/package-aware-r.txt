@@ -645,7 +645,7 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
-drawable ammobox
+drawable ammo_box
 drawable bg_base
 drawable bg_stick
 drawable bg_stick_pressed
@@ -656,7 +656,7 @@ drawable ic_launcher_foreground
 drawable icon
 drawable mainbg
 drawable map
-drawable medkit
+drawable med_kit
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low

@@ -3468,7 +3468,7 @@ public final class R {
     public static final int abc_textfield_search_default_mtrl_alpha=0x7f060052;
     public static final int abc_textfield_search_material=0x7f060053;
     public static final int abc_vector_test=0x7f060054;
-    public static final int ammobox=0x7f060055;
+    public static final int ammo_box=0x7f060055;
     public static final int bg_base=0x7f060056;
     public static final int bg_stick=0x7f060057;
     public static final int bg_stick_pressed=0x7f060058;
@@ -3479,7 +3479,7 @@ public final class R {
     public static final int icon=0x7f06005d;
     public static final int mainbg=0x7f06005e;
     public static final int map=0x7f06005f;
-    public static final int medkit=0x7f060060;
+    public static final int med_kit=0x7f060060;
     public static final int notification_action_background=0x7f060061;
     public static final int notification_bg=0x7f060062;
     public static final int notification_bg_low=0x7f060063;
