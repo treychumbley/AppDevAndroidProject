@@ -821,6 +821,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textView
 id textView2
+id textView4
 id time
 id title
 id titleDividerNoCustom
@@ -832,6 +833,7 @@ id tv_offset
 id uniform
 id up
 id useLogo
+id userProfileName
 id vertical
 id withText
 id wrap

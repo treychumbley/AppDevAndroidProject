@@ -4,6 +4,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,10 +18,20 @@ import io.github.controlwear.virtual.joystick.android.JoystickView;
 
 
 public class GameActivity extends AppCompatActivity {
+
+    //Text view initialization for username reference
+    private TextView textView4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        //Profile User Name reference from profile page
+        Intent profileNameIntent = getIntent();
+        String userProfileName = profileNameIntent.getStringExtra("User Name");
+        textView4 = findViewById(R.id.userProfileName);
+        textView4.setText(userProfileName);
 
         //Left Joystick
         final JoystickView joystickLeft = findViewById(R.id.joystickView_left);
