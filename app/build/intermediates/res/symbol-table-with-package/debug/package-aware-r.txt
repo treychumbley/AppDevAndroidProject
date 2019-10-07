@@ -758,7 +758,6 @@ id line1
 id line3
 id listMode
 id list_item
-id mainbg
 id message
 id middle
 id multiply
