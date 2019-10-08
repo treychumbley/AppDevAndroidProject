@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToGame(View view){
-        Log.i("test", "goToGame!!!!!");
+        Log.i("TestMove", "goToGame!!!!!");
         Intent battleIntent = new Intent(this, GameActivity.class);
         startActivity(battleIntent);
     }

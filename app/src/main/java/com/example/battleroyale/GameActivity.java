@@ -7,6 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -27,11 +28,13 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        // commented code caused program to crash
+
         //Profile User Name reference from profile page
-        Intent profileNameIntent = getIntent();
-        String userProfileName = profileNameIntent.getStringExtra("User Name");
-        textView4 = findViewById(R.id.userProfileName);
-        textView4.setText(userProfileName);
+//        Intent profileNameIntent = getIntent();
+//        String userProfileName = profileNameIntent.getStringExtra("User Name");
+//        textView4 = findViewById(R.id.userProfileName);
+//        textView4.setText(userProfileName);
 
         //Left Joystick
         final JoystickView joystickLeft = findViewById(R.id.joystickView_left);
@@ -44,7 +47,7 @@ public class GameActivity extends AppCompatActivity {
         joystickRight.setOnTouchListener(handleRotate);
 
 
-        addAmmoBoxToScreen();
+        addObjectToScreen(callLayout(),creatShotgunImage());
 
         //testing
         Player player1 = new Player(45,45,"Player1");
@@ -173,20 +176,53 @@ public class GameActivity extends AppCompatActivity {
 //            }
 //        });
 
-        //adds Ammo Box to Screen at random location
-        public void addAmmoBoxToScreen(){
+        public ConstraintLayout callLayout(){
             final ConstraintLayout layout = findViewById(R.id.gameLayout);
+            return layout;
+        }
+
+        //adds Ammo Box to Screen at random location
+        public ImageView createAmmoImage(){
 
             final ImageView ammo = new ImageView(this);
 
-            ammo.setX(0);
-            ammo.setY(0);
             ammo.setBackgroundResource(R.drawable.ammo_box);
-//            ammo.requestLayout();
+
+            return ammo;
+        }
+
+        public ImageView createPistolImage(){
+            final ImageView pistol = new ImageView(this);
+
+            pistol.setBackgroundResource(R.drawable.pistol);
+
+            return pistol;
+        }
+
+        public ImageView creatShotgunImage(){
+            final ImageView shotgun = new ImageView(this);
+
+            shotgun.setBackgroundResource(R.drawable.shotgun);
+
+            return shotgun;
+        }
+
+        public ImageView createHealthPackImage(){
+            final ImageView healthPack = new ImageView(this);
+
+            healthPack.setBackgroundResource(R.drawable.med_kit);
+
+            return healthPack;
+        }
+
+        public void addObjectToScreen(ConstraintLayout layout, ImageView imageView){
+            layout.setX(0);
+            layout.setY(0);
+            //ammo.requestLayout();
 //            ammo.getLayoutParams().height = 20;
 //            ammo.getLayoutParams().width = 20;
 //            ammo.setScaleType(ImageView.ScaleType.FIT_XY);
-            layout.addView(ammo);
+            layout.addView(imageView);
         }
 
     }
