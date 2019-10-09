@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.lang.Math;
 
@@ -47,7 +48,9 @@ public class GameActivity extends AppCompatActivity {
         joystickRight.setOnTouchListener(handleRotate);
 
 
-        addObjectToScreen(callLayout(),creatShotgunImage());
+        createShotgunImage();
+        createPistolImage();
+        createAmmoImage();
 
         //testing
         Player player1 = new Player(45,45,"Player1");
@@ -182,47 +185,56 @@ public class GameActivity extends AppCompatActivity {
         }
 
         //adds Ammo Box to Screen at random location
-        public ImageView createAmmoImage(){
+        public void createAmmoImage(){
 
             final ImageView ammo = new ImageView(this);
+            final int height = 108;
+            final int width = 150;
 
             ammo.setBackgroundResource(R.drawable.ammo_box);
 
-            return ammo;
+            addObjectToScreen(callLayout(), ammo, width,100,700,0);
         }
 
-        public ImageView createPistolImage(){
+        public void createPistolImage(){
             final ImageView pistol = new ImageView(this);
+            final int height = 110;
+            final int width = 200;
 
             pistol.setBackgroundResource(R.drawable.pistol);
 
-            return pistol;
+            addObjectToScreen(callLayout(), pistol, width,height,0,0);
         }
 
-        public ImageView creatShotgunImage(){
+        public void createShotgunImage(){
             final ImageView shotgun = new ImageView(this);
+            final int height = 138;
+            final int width = 300;
 
             shotgun.setBackgroundResource(R.drawable.shotgun);
 
-            return shotgun;
+            addObjectToScreen(callLayout(), shotgun, width,height,350,0);
         }
 
-        public ImageView createHealthPackImage(){
+        public void createHealthPackImage(){
             final ImageView healthPack = new ImageView(this);
 
             healthPack.setBackgroundResource(R.drawable.med_kit);
 
-            return healthPack;
+            addObjectToScreen(callLayout(), healthPack, 100,100,0,0);
         }
 
-        public void addObjectToScreen(ConstraintLayout layout, ImageView imageView){
-            layout.setX(0);
-            layout.setY(0);
-            //ammo.requestLayout();
-//            ammo.getLayoutParams().height = 20;
-//            ammo.getLayoutParams().width = 20;
-//            ammo.setScaleType(ImageView.ScaleType.FIT_XY);
+        public void addObjectToScreen(ConstraintLayout layout, ImageView imageView, int width, int height, int xLocation, int yLocation){
+            imageView.setX(xLocation);
+            imageView.setY(yLocation);
             layout.addView(imageView);
+
+
+            imageView.getLayoutParams().width = width;
+            imageView.getLayoutParams().height = height;
+            //found from https://stackoverflow.com/questions/44614271/android-resize-imageview-programmatically
+            imageView.requestLayout();
+            imageView.invalidate();
         }
 
     }
