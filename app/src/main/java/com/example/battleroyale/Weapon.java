@@ -10,6 +10,6 @@ public class Weapon extends Object {
     public int weaponType; // 0 = Pistol, 1 = Shotgun
 
     public Weapon(){
-        objectType = 0;
+        objectType = 1;
     }
 }

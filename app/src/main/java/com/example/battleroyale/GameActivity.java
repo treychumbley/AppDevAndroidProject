@@ -35,7 +35,7 @@ public class GameActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        
+
         setContentView(R.layout.activity_game);
 
 
@@ -58,30 +58,18 @@ public class GameActivity extends AppCompatActivity {
         joystickRight.setOnTouchListener(handleRotate);
 
 
-        createShotgunImage();
-        createPistolImage();
-        createAmmoImage();
 
-        //testing
-        Player player1 = new Player(45,45,"Player1");
-        Pistol pistol = new Pistol();
-        Shotgun shotgun = new Shotgun();
-        HealthPack healthPack = new HealthPack();
-        AmmoBox ammoBox = new AmmoBox();
-        Log.i("TestPlay",player1.toString());
-        player1.takeDamage(33);
-        Log.i("TestPlay",player1.toString());
-        player1.pickUpWeapon(pistol);
-        player1.takeDamage(33);
-        Log.i("TestPlay",player1.toString());
-        player1.pickUpHealthPack(healthPack);
-        player1.pickUpAmmoBox(ammoBox);
-        player1.takeDamage(33);
-        Log.i("TestPlay",player1.toString());
-        player1.pickUpWeapon(shotgun);
-        player1.pickUpAmmoBox(ammoBox);
-        player1.takeDamage(33);
-        Log.i("TestPlay",player1.toString());
+        createShotgunImage(0f,0f);
+        createShotgunImage(150f,0f);
+
+
+
+        Player player = new Player(90f,90f,"User1");
+        AmmoBox ammoBox = new AmmoBox(90f,90f);
+        HealthPack healthPack = new HealthPack(0f,0f);
+
+        Log.i("testCollision", "Player colliding with ammoBox is " + checkCollision(player,ammoBox));
+        Log.i("testCollision", "Player colliding with healthPack is " + checkCollision(player,healthPack));
 
     }
 
@@ -195,7 +183,7 @@ public class GameActivity extends AppCompatActivity {
         }
 
         //adds Ammo Box to Screen at random location
-        public void createAmmoImage(){
+        public void createAmmoImage(float xLoc, float yLoc){
 
             final ImageView ammo = new ImageView(this);
             final int height = 108;
@@ -203,38 +191,38 @@ public class GameActivity extends AppCompatActivity {
 
             ammo.setBackgroundResource(R.drawable.ammo_box);
 
-            addObjectToScreen(callLayout(), ammo, width,100,700,0);
+            addObjectToScreen(callLayout(), ammo, width,height,xLoc,yLoc);
         }
 
-        public void createPistolImage(){
+        public void createPistolImage(float xLoc, float yLoc){
             final ImageView pistol = new ImageView(this);
             final int height = 110;
             final int width = 200;
 
             pistol.setBackgroundResource(R.drawable.pistol);
 
-            addObjectToScreen(callLayout(), pistol, width,height,0,0);
+            addObjectToScreen(callLayout(), pistol, width,height,xLoc,yLoc);
         }
 
-        public void createShotgunImage(){
+        public void createShotgunImage(float xLoc, float yLoc){
             final ImageView shotgun = new ImageView(this);
             final int height = 138;
             final int width = 300;
 
             shotgun.setBackgroundResource(R.drawable.shotgun);
 
-            addObjectToScreen(callLayout(), shotgun, width,height,350,0);
+            addObjectToScreen(callLayout(), shotgun, width,height,xLoc,yLoc);
         }
 
-        public void createHealthPackImage(){
+        public void createHealthPackImage(float xLoc, float yLoc){
             final ImageView healthPack = new ImageView(this);
 
             healthPack.setBackgroundResource(R.drawable.med_kit);
 
-            addObjectToScreen(callLayout(), healthPack, 100,100,0,0);
+            addObjectToScreen(callLayout(), healthPack, 100,100,xLoc,yLoc);
         }
 
-        public void addObjectToScreen(ConstraintLayout layout, ImageView imageView, int width, int height, int xLocation, int yLocation){
+        public void addObjectToScreen(ConstraintLayout layout, ImageView imageView, int width, int height, float xLocation, float yLocation){
             imageView.setX(xLocation);
             imageView.setY(yLocation);
             layout.addView(imageView);
@@ -245,6 +233,13 @@ public class GameActivity extends AppCompatActivity {
             //found from https://stackoverflow.com/questions/44614271/android-resize-imageview-programmatically
             imageView.requestLayout();
             imageView.invalidate();
+        }
+
+        public boolean checkCollision(Object object1, Object object2){
+            boolean Collision = false;
+            if(object1.getXLocation() == object2.getXLocation() && object1.getYLocation() == object2.getYLocation())
+                Collision = true;
+            return Collision;
         }
 
     }

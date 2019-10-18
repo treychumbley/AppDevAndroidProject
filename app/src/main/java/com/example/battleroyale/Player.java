@@ -4,10 +4,8 @@ import android.util.*;
 //creates players
 //keeps track of players health/location/ammo/current weapon
 
-public class Player {
+public class Player extends Object{
     private int health = 100;
-    private double xLocation;
-    private double yLocation;
     private int ammo;
     private String username;
     private boolean alive = true;
@@ -15,10 +13,11 @@ public class Player {
     private Weapon weapon;
 
     //initialize player
-    public Player(int xCoordinate, int yCoordinate, String userID){
+    public Player(float xCoordinate, float yCoordinate, String userID){
         xLocation = xCoordinate;
         yLocation = yCoordinate;
         username = userID;
+        objectType = 0;
     }
 
     //check if player is alive
@@ -48,6 +47,8 @@ public class Player {
 
     public void pickUpHealthPack(HealthPack healthPack){
         health += healthPack.addHealth();
+        if (health > 100)
+            health = 100;
     }
 
 
