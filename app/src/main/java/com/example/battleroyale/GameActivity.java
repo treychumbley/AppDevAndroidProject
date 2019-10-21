@@ -60,7 +60,7 @@ public class GameActivity extends AppCompatActivity {
 
 
         createShotgunImage(0f,0f);
-        createShotgunImage(150f,0f);
+        createHealthPackImage(300f,0f);
 
 
 
@@ -216,10 +216,12 @@ public class GameActivity extends AppCompatActivity {
 
         public void createHealthPackImage(float xLoc, float yLoc){
             final ImageView healthPack = new ImageView(this);
+            final int height = 152;
+            final int width = 200;
 
             healthPack.setBackgroundResource(R.drawable.med_kit);
 
-            addObjectToScreen(callLayout(), healthPack, 100,100,xLoc,yLoc);
+            addObjectToScreen(callLayout(), healthPack, width,height,xLoc,yLoc);
         }
 
         public void addObjectToScreen(ConstraintLayout layout, ImageView imageView, int width, int height, float xLocation, float yLocation){
