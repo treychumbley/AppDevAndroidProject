@@ -7,6 +7,11 @@ public class Shotgun extends Weapon {
         damage = 35;
         firerate = .9;
         weaponType = 1;
+        xBuffer = 200;
+        yBuffer = 25;
+        height = 130;
+        width = 300;
+        image = R.drawable.shotgun;
         xLocation = xCoordinate;
         yLocation = yCoordinate;
     }

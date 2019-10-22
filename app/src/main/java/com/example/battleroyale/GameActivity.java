@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -59,14 +60,20 @@ public class GameActivity extends AppCompatActivity {
 
 
 
-        createShotgunImage(0f,0f);
-        createHealthPackImage(300f,0f);
+        Pistol pistol = new Pistol(0f,0f);
+        addObjectToScreen(pistol);
+
+        Shotgun shotgun = new Shotgun(1200f, 0f);
+        addObjectToScreen(shotgun);
 
 
 
         Player player = new Player(90f,90f,"User1");
-        AmmoBox ammoBox = new AmmoBox(90f,90f);
-        HealthPack healthPack = new HealthPack(0f,0f);
+        AmmoBox ammoBox = new AmmoBox(0f,1500f);
+        HealthPack healthPack = new HealthPack(1200f,1500f);
+
+        addObjectToScreen(ammoBox);
+        addObjectToScreen(healthPack);
 
         Log.i("testCollision", "Player colliding with ammoBox is " + checkCollision(player,ammoBox));
         Log.i("testCollision", "Player colliding with healthPack is " + checkCollision(player,healthPack));
@@ -182,64 +189,26 @@ public class GameActivity extends AppCompatActivity {
             return layout;
         }
 
-        //adds Ammo Box to Screen at random location
-        public void createAmmoImage(float xLoc, float yLoc){
+        //adds imageView for object
+        public void addObjectToScreen(Object object){
+            final ImageView image = new ImageView(this);
+            image.setBackgroundResource(object.getImage());
 
-            final ImageView ammo = new ImageView(this);
-            final int height = 108;
-            final int width = 150;
-
-            ammo.setBackgroundResource(R.drawable.ammo_box);
-
-            addObjectToScreen(callLayout(), ammo, width,height,xLoc,yLoc);
-        }
-
-        public void createPistolImage(float xLoc, float yLoc){
-            final ImageView pistol = new ImageView(this);
-            final int height = 110;
-            final int width = 200;
-
-            pistol.setBackgroundResource(R.drawable.pistol);
-
-            addObjectToScreen(callLayout(), pistol, width,height,xLoc,yLoc);
-        }
-
-        public void createShotgunImage(float xLoc, float yLoc){
-            final ImageView shotgun = new ImageView(this);
-            final int height = 138;
-            final int width = 300;
-
-            shotgun.setBackgroundResource(R.drawable.shotgun);
-
-            addObjectToScreen(callLayout(), shotgun, width,height,xLoc,yLoc);
-        }
-
-        public void createHealthPackImage(float xLoc, float yLoc){
-            final ImageView healthPack = new ImageView(this);
-            final int height = 152;
-            final int width = 200;
-
-            healthPack.setBackgroundResource(R.drawable.med_kit);
-
-            addObjectToScreen(callLayout(), healthPack, width,height,xLoc,yLoc);
-        }
-
-        public void addObjectToScreen(ConstraintLayout layout, ImageView imageView, int width, int height, float xLocation, float yLocation){
-            imageView.setX(xLocation);
-            imageView.setY(yLocation);
-            layout.addView(imageView);
+            image.setX(object.getXLocation());
+            image.setY(object.getYLocation());
+            callLayout().addView(image);
 
 
-            imageView.getLayoutParams().width = width;
-            imageView.getLayoutParams().height = height;
+            image.getLayoutParams().width = object.getWidth();
+            image.getLayoutParams().height = object.getHeight();
             //found from https://stackoverflow.com/questions/44614271/android-resize-imageview-programmatically
-            imageView.requestLayout();
-            imageView.invalidate();
+            image.requestLayout();
+            image.invalidate();
         }
 
-        public boolean checkCollision(Object object1, Object object2){
+        public boolean checkCollision(Object object, Object playerObject){
             boolean Collision = false;
-            if(object1.getXLocation() == object2.getXLocation() && object1.getYLocation() == object2.getYLocation())
+            if(playerObject.getXLocation() - object.getXLocation() <= object.xBuffer && playerObject.getXLocation() - object.getXLocation() >= 0 && playerObject.getYLocation() - object.getYLocation() <= object.yBuffer && playerObject.getYLocation() - object.getYLocation() >= 0)
                 Collision = true;
             return Collision;
         }
