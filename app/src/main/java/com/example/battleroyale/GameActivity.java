@@ -39,15 +39,6 @@ public class GameActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_game);
 
-
-        // commented code caused program to crash
-
-        //Profile User Name reference from profile page
-//        Intent profileNameIntent = getIntent();
-//        String userProfileName = profileNameIntent.getStringExtra("User Name");
-//        textView4 = findViewById(R.id.userProfileName);
-//        textView4.setText(userProfileName);
-
         //Left Joystick
         final JoystickView joystickLeft = findViewById(R.id.joystickView_left);
         //Create movement listener
