@@ -711,6 +711,8 @@ id both
 id bottom
 id bugview
 id buttonPanel
+id button_load
+id button_save
 id center
 id center_horizontal
 id center_vertical
@@ -730,6 +732,7 @@ id dimensions
 id direct
 id disableHome
 id edit_query
+id edit_text
 id end
 id expand_activities_button
 id expanded_menu
