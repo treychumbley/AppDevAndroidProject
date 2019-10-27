@@ -1,4 +1,4 @@
-#Mon Oct 21 21:27:09 CDT 2019
+#Sun Oct 27 17:04:31 CDT 2019
 base.0=/Users/dc.scott/Desktop/AppDevAndroidProject/app/build/intermediates/dex/debug/mergeExtDexDebug/out/classes.dex
 path.1=classes.dex
 renamed.1=classes2.dex
