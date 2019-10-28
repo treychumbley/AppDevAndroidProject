@@ -60,7 +60,7 @@ public class GameActivity extends AppCompatActivity {
 
 
         Player player = new Player(90f,90f,"User1");
-        AmmoBox ammoBox = new AmmoBox(0f,1500f);
+        AmmoBox ammoBox = new AmmoBox(90f,90f);
         HealthPack healthPack = new HealthPack(1200f,1500f);
 
         addObjectToScreen(ammoBox);
@@ -199,7 +199,12 @@ public class GameActivity extends AppCompatActivity {
 
         public boolean checkCollision(Object object, Object playerObject){
             boolean Collision = false;
-            if(playerObject.getXLocation() - object.getXLocation() <= object.xBuffer && playerObject.getXLocation() - object.getXLocation() >= 0 && playerObject.getYLocation() - object.getYLocation() <= object.yBuffer && playerObject.getYLocation() - object.getYLocation() >= 0)
+            float xDifference = playerObject.getXLocation() - object.getXLocation();
+            float yDifference = playerObject.getYLocation() - object.getYLocation();
+
+            Log.i("testCollision", "xDifference: " + xDifference);
+            Log.i("testCollision", "yDifference: " + yDifference);
+            if(xDifference <= object.xBuffer && xDifference >= 0 && yDifference <= object.yBuffer && yDifference >= 0)
                 Collision = true;
             return Collision;
         }
