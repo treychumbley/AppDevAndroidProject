@@ -72,13 +72,13 @@ public class GameActivity extends AppCompatActivity {
 
         Player player = new Player(90f,90f,"User1");
         AmmoBox ammoBox = new AmmoBox(90f,90f);
-        HealthPack healthPack = new HealthPack(1200f,1500f);
+        HealthPack healthPack = new HealthPack(0f,0f);
 
         addObjectToScreen(ammoBox);
         addObjectToScreen(healthPack);
 
-        Log.i("testCollision", "Player colliding with ammoBox is " + checkCollision(player,ammoBox));
-        Log.i("testCollision", "Player colliding with healthPack is " + checkCollision(player,healthPack));
+        Log.i("testCollision", "Player colliding with ammoBox is " + checkCollision(ammoBox,player));
+        Log.i("testCollision", "Player colliding with healthPack is " + checkCollision(healthPack,player));
 
     }
 
