@@ -17,6 +17,12 @@ import android.widget.ImageView;
 import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.Math;
 
 import io.github.controlwear.virtual.joystick.android.JoystickView;
@@ -25,11 +31,14 @@ import io.github.controlwear.virtual.joystick.android.JoystickView;
 public class GameActivity extends AppCompatActivity {
 
     //Text view initialization for username reference
-    private TextView textView4;
+    private static final String FILE_NAME = "example.txt";
+
+    TextView textView3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
 
         //sets game to full screen
@@ -38,6 +47,8 @@ public class GameActivity extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.activity_game);
+
+        textView3 = findViewById(R.id.textView3);
 
         //Left Joystick
         final JoystickView joystickLeft = findViewById(R.id.joystickView_left);
@@ -207,6 +218,38 @@ public class GameActivity extends AppCompatActivity {
             if(xDifference <= object.xBuffer && xDifference >= 0 && yDifference <= object.yBuffer && yDifference >= 0)
                 Collision = true;
             return Collision;
+        }
+
+        public void load(View v) {
+            FileInputStream fis = null;
+
+            try {
+                fis = openFileInput(FILE_NAME);
+                InputStreamReader isr = new InputStreamReader(fis);
+                BufferedReader br = new BufferedReader(isr);
+                StringBuilder sb = new StringBuilder();
+                String text;
+
+                while ((text = br.readLine()) != null){
+                    sb.append(text).append("\n");
+                }
+
+                textView3.setText(sb.toString());
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (fis != null){
+                    try {
+                        fis.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
         }
 
     }
