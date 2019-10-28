@@ -35,6 +35,10 @@ public class GameActivity extends AppCompatActivity {
 
     TextView textView3;
 
+    String text;
+
+    FileInputStream fis;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +52,32 @@ public class GameActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_game);
 
+
+        //Initialize profile name to show up in game through textview
         textView3 = findViewById(R.id.textView3);
+
+        try {
+            fis = openFileInput(FILE_NAME);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        InputStreamReader isr = new InputStreamReader(fis);
+        BufferedReader br = new BufferedReader(isr);
+        StringBuilder sb = new StringBuilder();
+
+
+        while (true){
+            try {
+                if (!((text = br.readLine()) != null)) break;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            sb.append(text).append("\n");
+        }
+
+        textView3.setText(sb.toString());
+
+
 
         //Left Joystick
         final JoystickView joystickLeft = findViewById(R.id.joystickView_left);
@@ -220,37 +249,6 @@ public class GameActivity extends AppCompatActivity {
             return Collision;
         }
 
-        public void load(View v) {
-            FileInputStream fis = null;
-
-            try {
-                fis = openFileInput(FILE_NAME);
-                InputStreamReader isr = new InputStreamReader(fis);
-                BufferedReader br = new BufferedReader(isr);
-                StringBuilder sb = new StringBuilder();
-                String text;
-
-                while ((text = br.readLine()) != null){
-                    sb.append(text).append("\n");
-                }
-
-                textView3.setText(sb.toString());
-
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                if (fis != null){
-                    try {
-                        fis.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-        }
 
     }
 
