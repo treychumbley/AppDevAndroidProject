@@ -24,6 +24,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.Math;
+import java.util.ArrayList;
 
 import io.github.controlwear.virtual.joystick.android.JoystickView;
 
@@ -38,6 +39,7 @@ public class GameActivity extends AppCompatActivity {
     String text;
 
     FileInputStream fis;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -710,6 +710,9 @@ id blocking
 id both
 id bottom
 id bugview
+id button
+id button2
+id button3
 id buttonPanel
 id button_load
 id button_save
@@ -825,6 +828,7 @@ id textSpacerNoTitle
 id textView
 id textView2
 id textView3
+id textView4
 id time
 id title
 id titleDividerNoCustom

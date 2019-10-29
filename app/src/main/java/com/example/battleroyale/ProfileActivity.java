@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,11 +15,25 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class ProfileActivity extends AppCompatActivity {
     private static final String FILE_NAME = "example.txt";
 
+    //Name
     EditText mEditText;
+
+    //Counter for prompts
+    private int promptCounter = 0;
+
+    //List containing preferences
+    ArrayList<String> results;
+
+    //Theme variables
+    TextView textView4;
+    Button button;
+    Button button2;
+    Button button3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +44,17 @@ public class ProfileActivity extends AppCompatActivity {
         TextView userProfileName = findViewById(R.id.userProfileName);
 
         mEditText = findViewById(R.id.edit_text);
+
+        button = findViewById(R.id.button);
+        button2 = findViewById(R.id.button2);
+        button3 = findViewById(R.id.button3);
+        textView4 = findViewById(R.id.textView4);
+
+        button.setVisibility(View.INVISIBLE);
+        button2.setVisibility(View.INVISIBLE);
+        button3.setVisibility(View.INVISIBLE);
+        textView4.setVisibility(View.INVISIBLE);
+
     }
 
     public void save(View v) {
@@ -54,6 +80,7 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             }
         }
+
     }
 
     public void load(View v) {
@@ -87,4 +114,5 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
     }
+
 }

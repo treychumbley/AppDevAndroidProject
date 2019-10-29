@@ -35,4 +35,9 @@ public class MainActivity extends AppCompatActivity {
         Intent profileIntent = new Intent(this, ProfileActivity.class);
         startActivity(profileIntent);
     }
+
+    //Main menu background image found from https://www.wallpaperfool.com/java-minimal-wallpaper-8/
+
+    //Main menu fist icon found from https://cdn3.iconfinder.com/data/icons/fighting/100/10-512.png
+
 }
