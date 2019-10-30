@@ -93,23 +93,24 @@ public class GameActivity extends AppCompatActivity {
 
 
 
-        Pistol pistol = new Pistol(0f,0f);
-        addObjectToScreen(pistol);
 
-        Shotgun shotgun = new Shotgun(1200f, 0f);
+        Shotgun shotgun = new Shotgun(500f, 500f);
         addObjectToScreen(shotgun);
 
 
 
-        Player player = new Player(90f,90f,"User1");
+        Player player = new Player(150f,150f,"User1");
         AmmoBox ammoBox = new AmmoBox(90f,90f);
-        HealthPack healthPack = new HealthPack(0f,0f);
+        HealthPack healthPack = new HealthPack(220f,220f);
 
+
+        addObjectToScreen(player);
         addObjectToScreen(ammoBox);
         addObjectToScreen(healthPack);
 
         Log.i("testCollision", "Player colliding with ammoBox is " + checkCollision(ammoBox,player));
         Log.i("testCollision", "Player colliding with healthPack is " + checkCollision(healthPack,player));
+        Log.i("testCollision", "Player colliding with ammoBox is " + checkCollision(shotgun,player));
 
     }
 
@@ -243,11 +244,16 @@ public class GameActivity extends AppCompatActivity {
             boolean Collision = false;
             float xDifference = playerObject.getXLocation() - object.getXLocation();
             float yDifference = playerObject.getYLocation() - object.getYLocation();
+            float PlayerXDifference = object.getXLocation() - playerObject.getXLocation();
+            float PlayerYDifference = object.getYLocation() - playerObject.getYLocation();
 
             Log.i("testCollision", "xDifference: " + xDifference);
             Log.i("testCollision", "yDifference: " + yDifference);
             if(xDifference <= object.xBuffer && xDifference >= 0 && yDifference <= object.yBuffer && yDifference >= 0)
                 Collision = true;
+            else if (PlayerXDifference <= playerObject.getxBuffer() && PlayerXDifference >= 0 && PlayerYDifference <= playerObject.getyBuffer() && PlayerYDifference >= 0)
+                Collision = true;
+
             return Collision;
         }
 

@@ -16,6 +16,11 @@ public class Player extends Object{
     public Player(float xCoordinate, float yCoordinate, String userID){
         xLocation = xCoordinate;
         yLocation = yCoordinate;
+        height = 315;
+        width = 220;
+        xBuffer = 90;
+        yBuffer = 70;
+        image = R.drawable.figure;
         username = userID;
         objectType = 0;
     }
