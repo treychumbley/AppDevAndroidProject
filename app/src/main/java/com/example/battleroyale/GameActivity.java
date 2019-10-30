@@ -54,30 +54,30 @@ public class GameActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_game);
 
-
-        //Initialize profile name to show up in game through textview
-        textView3 = findViewById(R.id.textView3);
-
-        try {
-            fis = openFileInput(FILE_NAME);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        InputStreamReader isr = new InputStreamReader(fis);
-        BufferedReader br = new BufferedReader(isr);
-        StringBuilder sb = new StringBuilder();
-
-
-        while (true){
-            try {
-                if (!((text = br.readLine()) != null)) break;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            sb.append(text).append("\n");
-        }
-
-        textView3.setText(sb.toString());
+//
+//        //Initialize profile name to show up in game through textview
+//        textView3 = findViewById(R.id.textView3);
+//
+//        try {
+//            fis = openFileInput(FILE_NAME);
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        InputStreamReader isr = new InputStreamReader(fis);
+//        BufferedReader br = new BufferedReader(isr);
+//        StringBuilder sb = new StringBuilder();
+//
+//
+//        while (true){
+//            try {
+//                if (!((text = br.readLine()) != null)) break;
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            sb.append(text).append("\n");
+//        }
+//
+//        textView3.setText(sb.toString());
 
 
 
@@ -104,13 +104,13 @@ public class GameActivity extends AppCompatActivity {
         HealthPack healthPack = new HealthPack(220f,220f);
 
 
-        addObjectToScreen(player);
+        //addObjectToScreen(player);
         addObjectToScreen(ammoBox);
         addObjectToScreen(healthPack);
 
-        Log.i("testCollision", "Player colliding with ammoBox is " + checkCollision(ammoBox,player));
-        Log.i("testCollision", "Player colliding with healthPack is " + checkCollision(healthPack,player));
-        Log.i("testCollision", "Player colliding with ammoBox is " + checkCollision(shotgun,player));
+//        Log.i("testCollision", "Player colliding with ammoBox is " + checkCollision(ammoBox,player));
+//        Log.i("testCollision", "Player colliding with healthPack is " + checkCollision(healthPack,player));
+//        Log.i("testCollision", "Player colliding with ammoBox is " + checkCollision(shotgun,player));
 
     }
 
@@ -240,22 +240,22 @@ public class GameActivity extends AppCompatActivity {
             image.invalidate();
         }
 
-        public boolean checkCollision(Object object, Object playerObject){
-            boolean Collision = false;
-            float xDifference = playerObject.getXLocation() - object.getXLocation();
-            float yDifference = playerObject.getYLocation() - object.getYLocation();
-            float PlayerXDifference = object.getXLocation() - playerObject.getXLocation();
-            float PlayerYDifference = object.getYLocation() - playerObject.getYLocation();
-
-            Log.i("testCollision", "xDifference: " + xDifference);
-            Log.i("testCollision", "yDifference: " + yDifference);
-            if(xDifference <= object.xBuffer && xDifference >= 0 && yDifference <= object.yBuffer && yDifference >= 0)
-                Collision = true;
-            else if (PlayerXDifference <= playerObject.getxBuffer() && PlayerXDifference >= 0 && PlayerYDifference <= playerObject.getyBuffer() && PlayerYDifference >= 0)
-                Collision = true;
-
-            return Collision;
-        }
+//        public boolean checkCollision(Object object, Object playerObject){
+//            boolean Collision = false;
+//            float xDifference = playerObject.getXLocation() - object.getXLocation();
+//            float yDifference = playerObject.getYLocation() - object.getYLocation();
+//            float PlayerXDifference = object.getXLocation() - playerObject.getXLocation();
+//            float PlayerYDifference = object.getYLocation() - playerObject.getYLocation();
+//
+//            Log.i("testCollision", "xDifference: " + xDifference);
+//            Log.i("testCollision", "yDifference: " + yDifference);
+//            if(xDifference <= object.xBuffer && xDifference >= 0 && yDifference <= object.yBuffer && yDifference >= 0)
+//                Collision = true;
+//            else if (PlayerXDifference <= playerObject.getxBuffer() && PlayerXDifference >= 0 && PlayerYDifference <= playerObject.getyBuffer() && PlayerYDifference >= 0)
+//                Collision = true;
+//
+//            return Collision;
+//        }
 
 
     }
