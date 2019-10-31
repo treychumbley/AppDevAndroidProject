@@ -713,6 +713,9 @@ id bugview
 id button
 id button2
 id button3
+id button4
+id button5
+id button6
 id buttonPanel
 id button_load
 id button_save
@@ -829,6 +832,8 @@ id textView
 id textView2
 id textView3
 id textView4
+id textView5
+id textView7
 id time
 id title
 id titleDividerNoCustom

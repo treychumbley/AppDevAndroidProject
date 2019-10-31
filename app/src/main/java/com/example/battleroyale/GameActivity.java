@@ -36,6 +36,8 @@ public class GameActivity extends AppCompatActivity{
 
     TextView textView3;
 
+    TextView textView7;
+
     String text;
 
     FileInputStream fis;
@@ -55,29 +57,29 @@ public class GameActivity extends AppCompatActivity{
         setContentView(R.layout.activity_game);
 
 //
-//        //Initialize profile name to show up in game through textview
-//        textView3 = findViewById(R.id.textView3);
-//
-//        try {
-//            fis = openFileInput(FILE_NAME);
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        InputStreamReader isr = new InputStreamReader(fis);
-//        BufferedReader br = new BufferedReader(isr);
-//        StringBuilder sb = new StringBuilder();
-//
-//
-//        while (true){
-//            try {
-//                if (!((text = br.readLine()) != null)) break;
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            sb.append(text).append("\n");
-//        }
-//
-//        textView3.setText(sb.toString());
+        //Initialize profile name to show up in game through textview
+        textView3 = findViewById(R.id.textView3);
+
+        try {
+            fis = openFileInput(FILE_NAME);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        InputStreamReader isr = new InputStreamReader(fis);
+        BufferedReader br = new BufferedReader(isr);
+        StringBuilder sb = new StringBuilder();
+
+
+        while (true){
+            try {
+                if (!((text = br.readLine()) != null)) break;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            sb.append(text).append("\n");
+        }
+
+        textView3.setText("User: " + sb.toString());
 
 
 
@@ -113,6 +115,12 @@ public class GameActivity extends AppCompatActivity{
 //        Log.i("testCollision", "Player colliding with ammoBox is " + checkCollision(ammoBox,player));
 //        Log.i("testCollision", "Player colliding with healthPack is " + checkCollision(healthPack,player));
 //        Log.i("testCollision", "Player colliding with ammoBox is " + checkCollision(shotgun,player));
+
+        Intent resultsIntent = getIntent();
+        ArrayList<String> results = resultsIntent.getStringArrayListExtra("Results");
+
+        textView7 = findViewById(R.id.textView7);
+        textView7.setText("UI" + "\n" + results);
 
     }
 
