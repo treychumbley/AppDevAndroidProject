@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import io.github.controlwear.virtual.joystick.android.JoystickView;
 
 
-public class GameActivity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity{
 
     //Text view initialization for username reference
     private static final String FILE_NAME = "example.txt";
@@ -100,13 +100,15 @@ public class GameActivity extends AppCompatActivity {
 
 
         Player player = new Player(150f,150f,"User1");
-        AmmoBox ammoBox = new AmmoBox(90f,90f);
-        HealthPack healthPack = new HealthPack(220f,220f);
+        AmmoBox ammoBox = new AmmoBox(0f,0f);
+        HealthPack healthPack = new HealthPack(340f,300f);
 
 
-        //addObjectToScreen(player);
+        addObjectToScreen(player);
         addObjectToScreen(ammoBox);
         addObjectToScreen(healthPack);
+
+        collisionType(ammoBox,player);
 
 //        Log.i("testCollision", "Player colliding with ammoBox is " + checkCollision(ammoBox,player));
 //        Log.i("testCollision", "Player colliding with healthPack is " + checkCollision(healthPack,player));
@@ -240,22 +242,34 @@ public class GameActivity extends AppCompatActivity {
             image.invalidate();
         }
 
-//        public boolean checkCollision(Object object, Object playerObject){
-//            boolean Collision = false;
-//            float xDifference = playerObject.getXLocation() - object.getXLocation();
-//            float yDifference = playerObject.getYLocation() - object.getYLocation();
-//            float PlayerXDifference = object.getXLocation() - playerObject.getXLocation();
-//            float PlayerYDifference = object.getYLocation() - playerObject.getYLocation();
-//
-//            Log.i("testCollision", "xDifference: " + xDifference);
-//            Log.i("testCollision", "yDifference: " + yDifference);
-//            if(xDifference <= object.xBuffer && xDifference >= 0 && yDifference <= object.yBuffer && yDifference >= 0)
-//                Collision = true;
-//            else if (PlayerXDifference <= playerObject.getxBuffer() && PlayerXDifference >= 0 && PlayerYDifference <= playerObject.getyBuffer() && PlayerYDifference >= 0)
-//                Collision = true;
-//
-//            return Collision;
-//        }
+        public boolean checkCollision(Object object, Object playerObject){
+            boolean Collision = false;
+            float xDifference = playerObject.getXLocation() - object.getXLocation();
+            float yDifference = playerObject.getYLocation() - object.getYLocation();
+            float PlayerXDifference = object.getXLocation() - playerObject.getXLocation();
+            float PlayerYDifference = object.getYLocation() - playerObject.getYLocation();
+
+            Log.i("testCollision", "xDifference: " + xDifference);
+            Log.i("testCollision", "yDifference: " + yDifference);
+            if(xDifference <= object.xBuffer && xDifference >= 0 && yDifference <= object.yBuffer && yDifference >= 0)
+                Collision = true;
+            else if (PlayerXDifference <= playerObject.getxBuffer() && PlayerXDifference >= 0 && PlayerYDifference <= playerObject.getyBuffer() && PlayerYDifference >= 0)
+                Collision = true;
+
+            return Collision;
+        }
+
+        public void collisionType(Object object, Player player){
+            if (object.getObjectType() == 2){
+                try{
+                    Log.i("testCollision", "Trying to get ammo");
+                    player.pickUpAmmoBox((AmmoBox) object);
+                    Log.i("testCollision","Got ammo");
+                } catch(Exception e){
+                    Log.i("testCollision", "Unable to add ammo.");
+                }
+            }
+        }
 
 
     }
