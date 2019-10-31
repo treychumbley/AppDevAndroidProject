@@ -28,6 +28,7 @@ import java.io.InputStreamReader;
 import java.lang.Math;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 import io.github.controlwear.virtual.joystick.android.JoystickView;
 
@@ -115,10 +116,10 @@ public class GameActivity extends AppCompatActivity{
         joystickRight.setOnTouchListener(handleRotate);
 
 
-
+        HashMap<Object,ImageView> objectList = new HashMap<Object,ImageView>();
 
         Shotgun shotgun = new Shotgun(500f, 500f);
-        addObjectToScreen(shotgun);
+        addObjectToScreen(shotgun, objectList);
 
 
 
@@ -127,10 +128,12 @@ public class GameActivity extends AppCompatActivity{
         HealthPack healthPack = new HealthPack(340f,300f);
 
 
-        addObjectToScreen(player);
-        addObjectToScreen(ammoBox);
-        addObjectToScreen(healthPack);
+        addObjectToScreen(player, objectList);
+        addObjectToScreen(ammoBox, objectList);
+        addObjectToScreen(healthPack,objectList);
 
+        player.pickUpAmmoBox(ammoBox);
+        Log.i("testCollision",player.toString());
         collisionType(ammoBox,player);
 
 //        Log.i("testCollision", "Player colliding with ammoBox is " + checkCollision(ammoBox,player));
@@ -254,7 +257,7 @@ public class GameActivity extends AppCompatActivity{
         }
 
         //adds imageView for object
-        public void addObjectToScreen(Object object){
+        public void addObjectToScreen(Object object, HashMap objectList){
             final ImageView image = new ImageView(this);
             image.setBackgroundResource(object.getImage());
 
@@ -268,6 +271,8 @@ public class GameActivity extends AppCompatActivity{
             //found from https://stackoverflow.com/questions/44614271/android-resize-imageview-programmatically
             image.requestLayout();
             image.invalidate();
+
+            objectList.put(object,image);
         }
 
         public boolean checkCollision(Object object, Object playerObject){
@@ -288,11 +293,13 @@ public class GameActivity extends AppCompatActivity{
         }
 
         public void collisionType(Object object, Player player){
+            //ImageView image = object.getImage();
+
             if (object.getObjectType() == 2){
                 try{
-                    Log.i("testCollision", "Trying to get ammo");
                     player.pickUpAmmoBox((AmmoBox) object);
                     Log.i("testCollision","Got ammo");
+                    //callLayout().removeView();
                 } catch(Exception e){
                     Log.i("testCollision", "Unable to add ammo.");
                 }

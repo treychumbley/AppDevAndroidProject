@@ -10,7 +10,7 @@ public class Player extends Object{
     private String username;
     private boolean alive = true;
     private int kills = 0;
-    private Weapon weapon;
+    private Weapon weapon = null;
 
     //initialize player
     public Player(float xCoordinate, float yCoordinate, String userID){
@@ -44,10 +44,13 @@ public class Player extends Object{
     public void pickUpWeapon(Weapon newWeapon){
         weapon = newWeapon;
         ammo = weapon.initialAmmo;
+
     }
 
     public void pickUpAmmoBox(AmmoBox ammoBox){
-        ammo += ammoBox.setAmmo(weapon);
+        if (this.weapon != null) {
+            ammo += ammoBox.setAmmo(weapon);
+        }
     }
 
     public void pickUpHealthPack(HealthPack healthPack){
