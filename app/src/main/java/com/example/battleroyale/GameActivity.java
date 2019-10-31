@@ -3,8 +3,10 @@ package com.example.battleroyale;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,6 +27,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.Math;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import io.github.controlwear.virtual.joystick.android.JoystickView;
 
@@ -60,6 +63,17 @@ public class GameActivity extends AppCompatActivity {
         //Initialize profile name to show up in game through textview
         textView3 = findViewById(R.id.textView3);
 
+        Intent resultsIntent = getIntent();
+        ArrayList<String> results = resultsIntent.getStringArrayListExtra("Results");
+
+        textView7 = findViewById(R.id.textView7);
+
+        textView7.setText("UI" + "\n" + results);
+
+        if (results == null){
+            textView7.setVisibility(View.INVISIBLE);
+        }
+
         try {
             fis = openFileInput(FILE_NAME);
         } catch (FileNotFoundException e) {
@@ -77,7 +91,14 @@ public class GameActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             sb.append(text).append("\n");
+            textView7.setVisibility(View.VISIBLE);
         }
+
+            if (((sb) == null)){
+                sb.append("Player");
+            }
+
+
 
         textView3.setText("User: " + sb.toString());
 
@@ -114,13 +135,12 @@ public class GameActivity extends AppCompatActivity {
 //        Log.i("testCollision", "Player colliding with healthPack is " + checkCollision(healthPack,player));
 //        Log.i("testCollision", "Player colliding with ammoBox is " + checkCollision(shotgun,player));
 
-        Intent resultsIntent = getIntent();
-        ArrayList<String> results = resultsIntent.getStringArrayListExtra("Results");
 
-        textView7 = findViewById(R.id.textView7);
-        textView7.setText("UI" + "\n" + results);
+
 
     }
+
+
 
 
     private View.OnTouchListener handleTouch = new View.OnTouchListener() {
