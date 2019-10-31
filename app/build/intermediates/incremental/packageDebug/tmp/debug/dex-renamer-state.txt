@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 #Wed Oct 30 21:26:01 CDT 2019
 base.0=/Users/dc.scott/Desktop/AppDevAndroidProject/app/build/intermediates/dex/debug/mergeExtDexDebug/out/classes.dex
+=======
+#Wed Oct 30 21:31:29 CDT 2019
+base.0=/Users/trey.chumbley/Desktop/AppDevAndroidProject/app/build/intermediates/dex/debug/mergeExtDexDebug/out/classes.dex
+>>>>>>> d9acc2fb477f5248f361825eca5edf7b9c549bf6
 path.1=classes.dex
 renamed.1=classes2.dex
 path.0=classes.dex
 renamed.0=classes.dex
-base.1=/Users/dc.scott/Desktop/AppDevAndroidProject/app/build/intermediates/dex/debug/mergeProjectDexDebug/out/classes.dex
+base.1=/Users/trey.chumbley/Desktop/AppDevAndroidProject/app/build/intermediates/dex/debug/mergeProjectDexDebug/out/classes.dex

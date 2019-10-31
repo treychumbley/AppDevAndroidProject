@@ -10,7 +10,7 @@ public class Object {
     public int height;
     public int width;
     public int image;
-    public int objectType; //0 = player, 1 = Weapon, 2 = AmmoBox, 3 = HealthPack
+    public int objectType; //0 = player, 1 = Weapon, 2 = AmmoBox, 3 = HealthPack, 4 bullet
 
 
 
@@ -31,6 +31,8 @@ public class Object {
     public float getxBuffer(){return xBuffer;}
 
     public float getyBuffer(){return yBuffer;}
+
+    public int getObjectType(){ return objectType;}
 
     public void updateLocation(float newX, float newY){
         xLocation = newX;

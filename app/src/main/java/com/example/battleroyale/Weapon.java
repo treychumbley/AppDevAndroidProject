@@ -12,4 +12,6 @@ public class Weapon extends Object {
     public Weapon(){
         objectType = 1;
     }
+
+    public int getDamage() {return damage;}
 }

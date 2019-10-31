@@ -18,8 +18,8 @@ public class Player extends Object{
         yLocation = yCoordinate;
         height = 315;
         width = 220;
-        xBuffer = 90;
-        yBuffer = 70;
+        xBuffer = 190;
+        yBuffer = 190;
         image = R.drawable.figure;
         username = userID;
         objectType = 0;
