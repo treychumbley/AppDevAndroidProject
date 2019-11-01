@@ -6,10 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/gameLayout"
+    android:background="@drawable/map"
     tools:context=".GameActivity">
 
     <ImageView
-        android:id="@+id/playerImage"
+        android:id="@+id/playerIcon"
         android:layout_width="92dp"
         android:layout_height="91dp"
         android:contentDescription="@string/players_character"
@@ -79,5 +80,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.188" />
+
+    <ImageView
+        android:id="@+id/bulletView1"
+        android:layout_width="20dp"
+        android:layout_height="25dp"
+        app:srcCompat="@drawable/this_bullet"
+        tools:layout_editor_absoluteX="90dp"
+        tools:layout_editor_absoluteY="221dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

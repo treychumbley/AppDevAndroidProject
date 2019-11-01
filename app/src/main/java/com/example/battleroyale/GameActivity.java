@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -46,6 +48,9 @@ public class GameActivity extends AppCompatActivity{
 
     FileInputStream fis;
 
+    ImageView playerIcon;
+    ImageView bullet1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +65,15 @@ public class GameActivity extends AppCompatActivity{
 
         setContentView(R.layout.activity_game);
 
+        playerIcon = findViewById(R.id.playerIcon);
+        bullet1 = findViewById(R.id.bulletView1);
+        bullet1.setVisibility(bullet1.GONE);
+
 //
         //Initialize profile name to show up in game through textview
         textView3 = findViewById(R.id.textView3);
+
+
 
         Intent resultsIntent = getIntent();
         ArrayList<String> results = resultsIntent.getStringArrayListExtra("Results");
@@ -103,17 +114,15 @@ public class GameActivity extends AppCompatActivity{
 
         textView3.setText("User: " + sb.toString());
 
-
-
         //Left Joystick
         final JoystickView joystickLeft = findViewById(R.id.joystickView_left);
         //Create movement listener
-        joystickLeft.setOnTouchListener(handleTouch);
-
+        joystickLeft.setOnTouchListener(handleMove);
         // Right Joystick
         final JoystickView joystickRight = findViewById(R.id.joystickView_right);
         //Create rotation listener
-        joystickRight.setOnTouchListener(handleRotate);
+        joystickRight.setOnTouchListener(handleShoot);
+
 
         //HashMap  to keep track of objects on the screen
         HashMap<Object,ImageView> objectList = new HashMap<Object,ImageView>();
@@ -150,108 +159,109 @@ public class GameActivity extends AppCompatActivity{
 
 
 
-    private View.OnTouchListener handleTouch = new View.OnTouchListener() {
+    private View.OnTouchListener handleMove = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             final float x = event.getX();
             final float y = event.getY();
 
             if (event.getAction() == MotionEvent.ACTION_MOVE) {
-                Log.i("click", x + "");
-                Log.i("click", y + "");
 
                 final float buttonCenterX = ((float) v.getWidth()) / 2;
                 final float buttonCenterY = ((float) v.getHeight()) / 2;
                 final float deltaX = x - buttonCenterX;
                 final float deltaY = y - buttonCenterY;
 
-                Log.i("button ", "deltaX " + deltaX);
-                Log.i("button ", "deltaY " + deltaY);
+                playerIcon.setX(playerIcon.getX() + deltaX * 0.1f);
+                playerIcon.setY(playerIcon.getY() + deltaY * 0.1f);
 
-                final ImageView playerIcon = findViewById(R.id.playerImage);
-                playerIcon.setX(playerIcon.getX() + deltaX * 0.5f);
-                playerIcon.setY(playerIcon.getY() + deltaY * 0.5f);
+                float PlayerX = playerIcon.getX();
+                float PlayerY = playerIcon.getY();
+
+                DisplayMetrics display = getResources().getDisplayMetrics();
+
+                final float topBound = -90;
+                final float bottomBound = display.heightPixels - 375f;
+                final float rightBound = display.widthPixels - 150f;
+                final float leftBound = -85f;
+
+
+                if (PlayerX < leftBound) {
+                    playerIcon.setX(leftBound);
+                }
+                if (PlayerX > rightBound) {
+                    playerIcon.setX(rightBound);
+                }
+                if (PlayerY < topBound) {
+                    playerIcon.setY(topBound);
+                }
+                if (PlayerY > bottomBound) {
+                    playerIcon.setY(bottomBound);
+                }
             }
-
-
             return false;
         }
 
     };
-    private View.OnTouchListener handleRotate = new View.OnTouchListener() {
+
+    private View.OnTouchListener handleShoot = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
 
             final float x = event.getX();
             final float y = event.getY();
 
+            final float buttonCenterX = ((float) v.getWidth()) / 2;
+            final float buttonCenterY = ((float) v.getHeight()) / 2;
+
+            final float deltaX = x - buttonCenterX;
+            final float deltaY = y - buttonCenterY;
+
+            float bulletX = bullet1.getX();
+            float bulletY = bullet1.getY();
+
+            float bulletWidth = bullet1.getWidth();
+            float bulletHeight = bullet1.getHeight();
+
+            float translationX = bulletX + deltaX ;
+            float translationY = bulletY + deltaY ;
+
+            bullet1.setX(playerIcon.getX() + (bulletWidth * .85f));
+            bullet1.setY(playerIcon.getY() + (bulletHeight * 1.1f));
+
+
+
             if (event.getAction() == MotionEvent.ACTION_MOVE) {
-                final ImageView playerIcon = findViewById(R.id.playerImage);
-                final float buttonCenterX = ((float) v.getWidth()) / 2;
-                final float buttonCenterY = ((float) v.getHeight()) / 2;
-                final float deltaX = x - buttonCenterX;
-                final float deltaY = y - buttonCenterY;
-                //final float buttonRotation =
+
+                ObjectAnimator bulletStream1X = ObjectAnimator.ofFloat(bullet1,"translationX", translationX);
+                bulletStream1X.setDuration(1000);
+
+                ObjectAnimator bulletStream1Y = ObjectAnimator.ofFloat(bullet1,"translationY", translationY);
+                bulletStream1Y.setDuration(1000);
+
+                bulletStream1X.start();
+                bulletStream1Y.start();
+
+                bullet1.setVisibility(bullet1.VISIBLE);
 
 
-                //playerIcon.setRotationX(playerIcon.getRotationX() + deltaX * 0.2f);
 
-                Log.i("rotation", playerIcon.getRotation() + " ");
-                Log.i("rotationX", playerIcon.getRotationX() + " ");
-                Log.i("rotationY", playerIcon.getRotationY() + " ");
+                DisplayMetrics display = getResources().getDisplayMetrics();
 
-                double playerRotation = Math.atan2(v.getRotationX() - buttonCenterY, v.getRotationY() - buttonCenterX);
-//                playerIcon.setRotation(playerIcon.getRotation() + (90f*.2f));
-                playerIcon.setRotation((float) playerRotation);
-                double dx = buttonCenterX - v.getRotationX();
-                double dy = buttonCenterY - v.getRotationY();
+                final float topBound = -90;
+                final float bottomBound = display.heightPixels - 375f;
+                final float rightBound = display.widthPixels - 150f;
+                final float leftBound = -85f;
 
+                if (bulletX < leftBound || bulletX > rightBound || bulletY < topBound || bulletY > bottomBound) {
 
-                Log.i("rotation ", playerIcon.getRotation() + " ");
-                Log.i("rotationX", playerIcon.getRotationX() + " ");
-                Log.i("rotationY", playerIcon.getRotationY() + " ");
+                    bullet1.setVisibility(View.GONE);
+
+                }
             }
-
             return false;
         }
     };
-//        joystickLeft.setOnMoveListener(new JoystickView.OnMoveListener() {
-////            @RequiresApi(api = Build.VERSION_CODES.Q)
-////            @Override
-////            public void onMove(int angle, int strength) {
-////                float playerX = (float) Math.cos(angle);
-////                float playerY = (float) Math.sin(angle);
-////
-////
-////                if (joystickLeft.isEnabled()) {
-////
-////                    playerView.setTranslationX(playerX);
-////                    playerView.setTranslationY(playerY);
-////                }
-////
-////            }
-////        });
-
-
-        //mTextViewAngleRight = (TextView) findViewById(R.id.textView_angle_right);
-        //mTextViewStrengthRight = (TextView) findViewById(R.id.textView_strength_right);
-        //mTextViewCoordinateRight = findViewById(R.id.textView_coordinate_right);
-
-//        final JoystickView joystickRight = (JoystickView) findViewById(R.id.joystickView_right);
-//        joystickRight.setOnMoveListener(new JoystickView.OnMoveListener() {
-//            @SuppressLint("DefaultLocale")
-//            @Override
-//            public void onMove(int angle, int strength) {
-//                /*TextView mTextViewAngleRight.setText(angle + "°");
-//                TextView mTextViewStrengthRight;
-//                mTextViewStrengthRight.setText(strength + "%");
-//                TextView mTextViewCoordinateRight;
-//                mTextViewCoordinateRight.setText(
-//                        String.format("x%03d:y%03d",
-//                                joystickRight.getNormalizedX(),
-//                                joystickRight.getNormalizedY())*/
-//            }
-//        });
 
         public ConstraintLayout callLayout(){
             final ConstraintLayout layout = findViewById(R.id.gameLayout);
