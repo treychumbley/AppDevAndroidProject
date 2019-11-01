@@ -115,32 +115,34 @@ public class GameActivity extends AppCompatActivity{
         //Create rotation listener
         joystickRight.setOnTouchListener(handleRotate);
 
-
+        //HashMap  to keep track of objects on the screen
         HashMap<Object,ImageView> objectList = new HashMap<Object,ImageView>();
 
+
+        //Testing for presentation
         Shotgun shotgun = new Shotgun(500f, 500f);
-        addObjectToScreen(shotgun, objectList);
-
-
-
+        Pistol pistol = new Pistol(310f,300f);
         Player player = new Player(150f,150f,"User1");
         AmmoBox ammoBox = new AmmoBox(0f,0f);
-        HealthPack healthPack = new HealthPack(340f,300f);
+        HealthPack healthPack = new HealthPack(500F,50f);
 
-
+        addObjectToScreen(pistol,objectList);
+        addObjectToScreen(shotgun, objectList);
         addObjectToScreen(player, objectList);
         addObjectToScreen(ammoBox, objectList);
         addObjectToScreen(healthPack,objectList);
 
         player.pickUpAmmoBox(ammoBox);
+
+
+
+        Log.i("testCollision", "Player colliding with ammoBox is " + checkCollision(ammoBox,player));
+        Log.i("testCollision", "Player colliding with healthPack is " + checkCollision(healthPack,player));
+        Log.i("testCollision", "Player colliding with ammoBox is " + checkCollision(shotgun,player));
+        Log.i("testCollision","Player colliding with pistol is " + checkCollision(pistol,player));
+
+        //gameStatus(objectList);
         Log.i("testCollision",player.toString());
-        collisionType(ammoBox,player);
-
-//        Log.i("testCollision", "Player colliding with ammoBox is " + checkCollision(ammoBox,player));
-//        Log.i("testCollision", "Player colliding with healthPack is " + checkCollision(healthPack,player));
-//        Log.i("testCollision", "Player colliding with ammoBox is " + checkCollision(shotgun,player));
-
-
 
 
     }
@@ -282,8 +284,6 @@ public class GameActivity extends AppCompatActivity{
             float PlayerXDifference = object.getXLocation() - playerObject.getXLocation();
             float PlayerYDifference = object.getYLocation() - playerObject.getYLocation();
 
-            Log.i("testCollision", "xDifference: " + xDifference);
-            Log.i("testCollision", "yDifference: " + yDifference);
             if(xDifference <= object.xBuffer && xDifference >= 0 && yDifference <= object.yBuffer && yDifference >= 0)
                 Collision = true;
             else if (PlayerXDifference <= playerObject.getxBuffer() && PlayerXDifference >= 0 && PlayerYDifference <= playerObject.getyBuffer() && PlayerYDifference >= 0)
@@ -292,16 +292,43 @@ public class GameActivity extends AppCompatActivity{
             return Collision;
         }
 
-        public void collisionType(Object object, Player player){
-            //ImageView image = object.getImage();
+        public void collisionType(Object object, Player player, HashMap<Object,ImageView> objectList){
 
             if (object.getObjectType() == 2){
                 try{
                     player.pickUpAmmoBox((AmmoBox) object);
                     Log.i("testCollision","Got ammo");
-                    //callLayout().removeView();
+                    callLayout().removeView(objectList.get(object));
                 } catch(Exception e){
                     Log.i("testCollision", "Unable to add ammo.");
+                }
+            } else if (object.getObjectType() == 1){
+                try{
+                    player.pickUpWeapon((Weapon) object);
+                    Log.i("testCollision","Weapon was picked up");
+                    callLayout().removeView(objectList.get(object));
+                } catch (Exception e){
+                    Log.i("testCollision","Unable to pick up weapon");
+                }
+            } else if (object.getObjectType() == 3){
+                try{
+                    player.pickUpHealthPack((HealthPack)object);
+                    Log.i("testCollision","Picked up health");
+                    callLayout().removeView(objectList.get(object));
+                }catch (Exception e){
+                    Log.i("testCollision", "Unable to pick up health");
+                }
+            }
+        }
+
+        public void gameStatus(HashMap<Object,ImageView> objectList){
+            for (Object i : objectList.keySet()){
+                if(i.getObjectType() == 0){
+                    for (Object j : objectList.keySet()){
+                        if(checkCollision(j,i)){
+                            collisionType(j,(Player) i,objectList);
+                        }
+                    }
                 }
             }
         }
