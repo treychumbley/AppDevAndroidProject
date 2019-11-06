@@ -21,87 +21,95 @@ import java.util.ArrayList;
 public class ProfileActivity extends AppCompatActivity {
     private static final String FILE_NAME = "example.txt";
 
-    //Name
-    EditText mEditText;
+    // User inputted name
+    private EditText myEditText;
 
-    //Counter for prompts
-    private int promptCounter;
+    // Counter for prompts
+    private static int promptCounter;
 
-    //List containing preferences
-    ArrayList<String> results;
+    // List containing preferences
+    private static ArrayList<String> results;
 
-    //Theme variables
-    private TextView textView4;
+    // Theme variables
+    private TextView themePrompt;
+    private Button theme1;
+    private Button theme2;
+    private Button theme3;
+
+    // Alliance variables
+    private TextView teamPrompt;
+    private Button team1;
+    private Button team2;
+    private Button team3;
+
     private Button button;
-    private Button button2;
-    private Button button3;
-
-    //Alliance variables
-    private TextView textView5;
-    private Button button4;
-    private Button button5;
-    private Button button6;
+    private String buttonText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_profile);
 
-        //Name display
-        TextView userProfileName = findViewById(R.id.userProfileName);
+        //User inputted name attribute
+        myEditText = findViewById(R.id.edit_text);
 
-        mEditText = findViewById(R.id.edit_text);
-
+        //Prompt for profile creation
         promptCounter = 0;
 
+        //List to store profile preferences
         results = new ArrayList<>();
 
-        textView4 = findViewById(R.id.textView4);
-        button = findViewById(R.id.button);
-        button2 = findViewById(R.id.button2);
-        button3 = findViewById(R.id.button3);
+        //Theme attributes
+        themePrompt = findViewById(R.id.themePrompt);
+        theme1 = findViewById(R.id.theme1);
+        theme2 = findViewById(R.id.theme2);
+        theme3 = findViewById(R.id.theme3);
 
-        textView5 = findViewById(R.id.textView5);
-        button4 = findViewById(R.id.button4);
-        button5 = findViewById(R.id.button5);
-        button6 = findViewById(R.id.button6);
+        //Team attributes
+        teamPrompt = findViewById(R.id.teamPrompt);
+        team1 = findViewById(R.id.team1);
+        team2 = findViewById(R.id.team2);
+        team3 = findViewById(R.id.team3);
 
         //Variable visibility modification
-        button.setVisibility(View.INVISIBLE);
-        button2.setVisibility(View.INVISIBLE);
-        button3.setVisibility(View.INVISIBLE);
-        textView4.setVisibility(View.INVISIBLE);
+        theme1.setVisibility(View.INVISIBLE);
+        theme2.setVisibility(View.INVISIBLE);
+        theme3.setVisibility(View.INVISIBLE);
+        themePrompt.setVisibility(View.INVISIBLE);
 
-        button4.setVisibility(View.INVISIBLE);
-        button5.setVisibility(View.INVISIBLE);
-        button6.setVisibility(View.INVISIBLE);
-        textView5.setVisibility(View.INVISIBLE);
+        team1.setVisibility(View.INVISIBLE);
+        team2.setVisibility(View.INVISIBLE);
+        team3.setVisibility(View.INVISIBLE);
+        teamPrompt.setVisibility(View.INVISIBLE);
 
     }
 
-    public void thirdPrompt(String previousInput){
+    //Method that stores inputted name into results list and reveals the second prompt of selections
+    private void secondPrompt(String previousInput){
         results.add(previousInput);
-        button4.setVisibility(View.VISIBLE);
-        button5.setVisibility(View.VISIBLE);
-        button6.setVisibility(View.VISIBLE);
-        textView5.setVisibility(View.VISIBLE);
+        team1.setVisibility(View.VISIBLE);
+        team2.setVisibility(View.VISIBLE);
+        team3.setVisibility(View.VISIBLE);
+        teamPrompt.setVisibility(View.VISIBLE);
 
     }
 
-    public void save(View v) {
-        String text = mEditText.getText().toString();
+    public void saveText(View v) {
+        String text = myEditText.getText().toString();
         FileOutputStream fos = null;
 
-        button.setVisibility(View.VISIBLE);
-        button2.setVisibility(View.VISIBLE);
-        button3.setVisibility(View.VISIBLE);
-        textView4.setVisibility(View.VISIBLE);
+        theme1.setVisibility(View.VISIBLE);
+        theme2.setVisibility(View.VISIBLE);
+        theme3.setVisibility(View.VISIBLE);
+        themePrompt.setVisibility(View.VISIBLE);
 
         try {
             fos = openFileOutput(FILE_NAME, MODE_PRIVATE);
             fos.write(text.getBytes());
 
-            //mEditText.getText().clear();
+            //myEditText.getText().clear();
             Toast.makeText(this, "Saved to " + getFilesDir() + "/" + FILE_NAME, Toast.LENGTH_LONG).show();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -119,13 +127,14 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    public void load(View v) {
+    public void loadText(View v) {
+
         FileInputStream fis = null;
 
-        button.setVisibility(View.VISIBLE);
-        button2.setVisibility(View.VISIBLE);
-        button3.setVisibility(View.VISIBLE);
-        textView4.setVisibility(View.VISIBLE);
+        theme1.setVisibility(View.VISIBLE);
+        theme2.setVisibility(View.VISIBLE);
+        theme3.setVisibility(View.VISIBLE);
+        themePrompt.setVisibility(View.VISIBLE);
 
         try {
             fis = openFileInput(FILE_NAME);
@@ -138,7 +147,7 @@ public class ProfileActivity extends AppCompatActivity {
                 sb.append(text).append("\n");
             }
 
-            mEditText.setText(sb.toString());
+            myEditText.setText(sb.toString());
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -156,21 +165,25 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    public void handleClick(View view){
-        Button button = (Button) view;
-        String buttonText = button.getText().toString();
+    public void createProfile(View view){
 
+        button = (Button) view;
+        buttonText = button.getText().toString();
+
+        // Checks if any of the visible buttons are clicked in order to increment the counter
         if (view.getId() == button.getId()){
             promptCounter++;
         }
 
         // Make button click show next prompt & add text of button clicked to list
         if (promptCounter == 1) {
-            thirdPrompt("Theme: " + buttonText);
+            secondPrompt("Theme: " + buttonText);
         }
+
         if (promptCounter == 2){
             results.add("\n" + "Team: " + buttonText);
 
+            // Goes to the game page along with the list of user preferences
             Intent gameIntent = new Intent(this, GameActivity.class);
             gameIntent.putStringArrayListExtra("Results", results);
             startActivity(gameIntent);

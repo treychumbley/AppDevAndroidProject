@@ -34,7 +34,7 @@
         android:id="@+id/button_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="save"
+        android:onClick="saveText"
         android:text="save name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/button_save"
         android:layout_alignStart="@+id/button_save"
-        android:onClick="load"
+        android:onClick="loadText"
         android:text="load name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +59,7 @@
         app:layout_constraintVertical_bias="0.288" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/themePrompt"
         android:layout_width="121dp"
         android:layout_height="28dp"
         android:text="Preferred theme?"
@@ -71,11 +71,11 @@
         app:layout_constraintVertical_bias="0.436" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/theme1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#9C27B0"
-        android:onClick="handleClick"
+        android:onClick="createProfile"
         android:text="Purple"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,11 +85,11 @@
         app:layout_constraintVertical_bias="0.521" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/theme2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#8BC34A"
-        android:onClick="handleClick"
+        android:onClick="createProfile"
         android:text="Green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,11 +99,11 @@
         app:layout_constraintVertical_bias="0.521" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/theme3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#FF9800"
-        android:onClick="handleClick"
+        android:onClick="createProfile"
         android:text="Orange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -113,7 +113,7 @@
         app:layout_constraintVertical_bias="0.521" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/teamPrompt"
         android:layout_width="127dp"
         android:layout_height="26dp"
         android:text="Preferred Alliance"
@@ -125,10 +125,10 @@
         app:layout_constraintVertical_bias="0.67" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/team1"
         android:layout_width="154dp"
         android:layout_height="48dp"
-        android:onClick="handleClick"
+        android:onClick="createProfile"
         android:text="Revolutionaries"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -138,10 +138,10 @@
         app:layout_constraintVertical_bias="0.836" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/team2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="handleClick"
+        android:onClick="createProfile"
         android:text="Guardians"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -151,16 +151,16 @@
         app:layout_constraintVertical_bias="0.728" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/team3"
         android:layout_width="154dp"
         android:layout_height="48dp"
-        android:onClick="handleClick"
+        android:onClick="createProfile"
         android:text="New World"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.935"
+        app:layout_constraintHorizontal_bias="0.976"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.601" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.836" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

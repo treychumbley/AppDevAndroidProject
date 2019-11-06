@@ -712,12 +712,6 @@ id both
 id bottom
 id bugview
 id bulletView1
-id button
-id button2
-id button3
-id button4
-id button5
-id button6
 id buttonPanel
 id button_load
 id button_save
@@ -826,6 +820,10 @@ id tabMode
 id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
+id team1
+id team2
+id team3
+id teamPrompt
 id text
 id text2
 id textSpacerNoButtons
@@ -833,9 +831,12 @@ id textSpacerNoTitle
 id textView
 id textView2
 id textView3
-id textView4
 id textView5
 id textView7
+id theme1
+id theme2
+id theme3
+id themePrompt
 id time
 id title
 id titleDividerNoCustom
